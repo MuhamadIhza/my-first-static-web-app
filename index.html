@@ -2,34 +2,34 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>TST048</title>
+    <title>Form Pemesanan</title>
     <!-- Add some CSS to change client UI -->
     <style>
     body {
-        background-color: #232F3E;
+        background-color: #FFFFFF;
         }
     label, button {
-        color: #FF9900;
+        color: #000000;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 20px;
-        margin-left: 40px;
+        margin-left: 20px;
         }
      input {
-        color: #232F3E;
+        color: #000000;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
+        font-size: 18px;
         margin-left: 20px;
         }
     </style>
     <script>
         // define the callAPI function that takes a first name and last name as parameters
-        var callAPI = (firstName,lastName)=>{
+        var callAPI = (firstName,lastName,noHp,email,tipe,nopolisi,layanan,masalah)=>{
             // instantiate a headers object
             var myHeaders = new Headers();
             // add content type header to object
             myHeaders.append("Content-Type", "application/json");
             // using built in JSON utility package turn object to string and store in a variable
-            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
+            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName,"noHp":noHp,"email":email,"tipe":tipe,"nopolisi":nopolisi,"layanan":layanan,"masalah":masalah});
             // create a JSON object with parameters for API call and store in a variable
             var requestOptions = {
                 method: 'POST',
@@ -46,13 +46,27 @@
     </script>
 </head>
 <body>
+    <h2>Form Pemesanan Layanan</h2>
+    
     <form>
-        <label>First Name :</label>
-        <input type="text" id="fName">
-        <label>Last Name :</label>
-        <input type="text" id="lName">
-        <!-- set button onClick method to call function we defined passing input values as parameters -->
-        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
+      <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+      <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+      <label for="noHp">Nomor Hp:</label><br>
+        <input type="text" id="noHp" name="noHp"><br>
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" name="email"><br>
+      <label for="tipe">Tipe:</label><br>
+      <input type="text" id="tipe" name="tipe"><br>
+      <label for="nopolisi">No Polisi:</label><br>
+      <input type="text" id="nopolisi" name="nopolisi"><br>
+      <label for="layanan">layanan:</label><br>
+      <input type="text" id="layanan" name="layanan"><br>
+      <label for="masalah">Masalah:</label><br>
+      <input type="text" id="masalah" name="masalah"><br><br>
+      <!-- set button onClick method to call function we defined passing input values as parameters -->
+      <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value,document.getElementById('noHP').value,document.getElementById('email').value,document.getElementById('tipe').value,document.getElementById('nopolisi').value,document.getElementById('layanan').value,document.getElementById('masalah').value)">Submit</button>
     </form>
 </body>
 </html>
